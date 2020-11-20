@@ -1,24 +1,17 @@
 #include "processor.h"
 
-
+Processor::Processor(){}
 
 Processor::Processor(const string &name): Device(name){}
 
-void Processor::connectTo(Display &display)
-{
-    this->_data=display.getAdData();
+void Processor::connectTo(Display &display){
+    // Copying the display
+    _D = display;
 }
 
-void Processor::process(const string &data)
-{
-    string newdata;
-    for(unsigned int i= 0, j=data.length(); i < data.length(), j>0; i++, j--){
-        newdata[i]=data[j];
-    }
-    *_data="PROCESSED:" + newdata;
-}
-
-string *Processor::getProcessor()
-{
-    return &_data;
+void Processor::process(const string &data){
+    // Reverse the input string and add PROCESSED
+    string aux = "PROCESSED: " + string(data.rbegin(), data.rend());
+    // Sending the str to the display
+    _D.process(aux);
 }

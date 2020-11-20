@@ -1,17 +1,16 @@
 #ifndef DEVICE_H
 #define DEVICE_H
-#include <iostream>
+#include <string>
 
-class Device
-{
-public:
+using namespace std;
 
-    Device();
-    Device(const std::string& _name);
-    std::string getName() const ;
-
-private:
-    std::string _name;
+class Device{
+    public:
+        Device();
+        Device(const string & name);
+        string getName() const;
+    private:
+        string _name;
 };
 
 #endif // DEVICE_H
